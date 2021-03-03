@@ -7,6 +7,7 @@ yarn-error.log*
 
 # lock
 package-lock.json
+yarn.lock
 
 # Runtime data
 pids
@@ -60,17 +61,18 @@ typings/
 # dotenv environment variables file
 .env
 
+public
+website
+.cache
 build
 dist
 temp
 .DS_Store
 .idea
-# demos/assets/screenshots
-demos/assets/screenshots-new
+demos/assets/screenshots
 lib
-stats.json
-tslint.json
+esm
 
 *.sw*
 *.un~
-*.vscode
+stats.json

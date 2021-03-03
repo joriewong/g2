@@ -31,7 +31,7 @@ $ git commit -m "fix(role): role.use must xxx"
 $ git push origin branch-name
 ```
 
-提交后就可以在 [g2](https://github.com/antvis/g2/pulls) 创建 Pull Request 了。
+提交后就可以在 [G2](https://github.com/antvis/g2/pulls) 创建 Pull Request 了。
 
 由于谁也无法保证过了多久之后还记得多少，为了后期回溯历史的方便，请在提交 MR 时确保提供了以下信息。
 
@@ -110,7 +110,7 @@ BREAKING CHANGE:
 
 ## 发布管理
 
-g2 基于 [semver] 语义化版本号进行发布。
+G2 基于 [semver] 语义化版本号进行发布。
 
 `master` 分支为当前稳定发布的版本。
 
@@ -129,20 +129,19 @@ g2 基于 [semver] 语义化版本号进行发布。
 
 - 确认当前 Milestone 所有的 issue 都已关闭或可延期，完成性能测试。
 - 发起一个新的 [Release Proposal MR]，按照 [node CHANGELOG] 进行 `History` 的编写，修正文档中与版本相关的内容，commits 可以自动生成。
-    ```bash
-    $ npm run commits
-    ```
+  ```bash
+  $ npm run commits
+  ```
 - 指定下一个大版本的 PM。
 
 #### 发布时：
 
-- 将老的稳定版本（master）备份到以当前大版本为名字的分支上（例如 `1.x`），并设置 tag 为 {v}.x`（ v 为当前版本，例如 `1.x`）。
+- 将老的稳定版本（master）备份到以当前大版本为名字的分支上（例如 `1.x`），并设置 tag 为 {v}.x`（ v 为当前版本，例如`1.x`）。
 - 发布新的稳定版本到 [npm]，并通知上层框架进行更新。
 - `npm publish` 之前，请先阅读[『我是如何发布一个 npm 包的』]。
 
-
 [semver]: http://semver.org/lang/zh-CN/
-[Release proposal MR]: https://github.com/nodejs/node/pull/4181
-[node CHANGELOG]: https://github.com/nodejs/node/blob/master/CHANGELOG.md
+[release proposal mr]: https://github.com/nodejs/node/pull/4181
+[node changelog]: https://github.com/nodejs/node/blob/master/CHANGELOG.md
 [npm]: http://npmjs.com/
 [『我是如何发布一个 npm 包的』]: https://fengmk2.com/blog/2016/how-i-publish-a-npm-package

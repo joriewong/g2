@@ -1,96 +1,121 @@
-# G2: The Grammar of Graphics in JavaScript
+<img src="https://gw.alipayobjects.com/zos/antfincdn/R8sN%24GNdh6/language.svg" width="18"> English | [简体中文](./README.zh-CN.md)
 
-[![](https://img.shields.io/travis/antvis/g2.svg)](https://travis-ci.org/antvis/g2)
-![](https://img.shields.io/badge/language-javascript-red.svg)
-![](https://img.shields.io/badge/license-MIT-000000.svg)
+<h1 align="center">
+<b>G2</b>
+</h1>
 
-[![NPM Package](https://img.shields.io/npm/v/@antv/g2.svg)](https://www.npmjs.com/package/@antv/g2)
-[![NPM Downloads](http://img.shields.io/npm/dm/@antv/g2.svg)](https://npmjs.org/package/@antv/g2)
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/antvis/g2.svg)](http://isitmaintained.com/project/antvis/g2 "Percentage of issues still open")
+<div align="center">
 
-G2 is a visualization grammar, a data-driven visual language with a high level of usability and scalability. It provides a set of grammars, takes users beyond a limited set of charts to an almost unlimited world of graphical forms. With G2, users can describe the visual appearance of a visualization just by one statement.
+A highly interactive data-driven visualization grammar for statistical charts.
 
-**Special thanks to [Leland Wilkinson](https://en.wikipedia.org/wiki/Leland_Wilkinson), the author of [*The Grammar Of Graphics*](https://www.cs.uic.edu/~wilkinson/TheGrammarOfGraphics/GOG.html), whose book served as the foundation for G2.**
+[![](https://img.shields.io/travis/antvis/g2.svg)](https://travis-ci.org/antvis/g2) ![CI](https://github.com/antvis/G2/workflows/CI/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/antvis/G2/badge.svg?branch=master)](https://coveralls.io/github/antvis/G2?branch=master) [![NPM Package](https://img.shields.io/npm/v/@antv/g2.svg)](https://www.npmjs.com/package/@antv/g2) [![NPM Downloads](http://img.shields.io/npm/dm/@antv/g2.svg)](https://npmjs.org/package/@antv/g2) ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg) [![Percentage of issues still open](http://isitmaintained.com/badge/open/antvis/g2.svg)](http://isitmaintained.com/project/antvis/g2 'Percentage of issues still open') [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](https://github.com/antvis/g2/pulls)
 
-[More details about G2](https://antv.alipay.com/zh-cn/g2/3.x/index.html).
+![](https://img.shields.io/badge/language-TypeScript-red.svg) ![](https://img.shields.io/badge/license-MIT-000000.svg)
 
-<img src="https://gw.alipayobjects.com/zos/rmsportal/AOwgKIjknXfggPijmhym.gif" width="200"><img src="https://gw.alipayobjects.com/zos/rmsportal/nfiOREzMIsENrzUeLOGR.gif" width="200"><img src="https://gw.alipayobjects.com/zos/rmsportal/uZZmaudtKRnvUhmUdZSZ.gif" width="180"><img src="https://gw.alipayobjects.com/zos/rmsportal/ifSTXzrGbvtLRpnAvAiZ.gif" width="200">
+[![](https://img.shields.io/twitter/follow/AntV_Alipay.svg?label=AntV&style=social)](https://twitter.com/AntV_Alipay)
 
+</div>
 
-## Installation
+<p align="center">
+  <a href="https://g2.antv.vision/en">Website</a> •
+  <a href="https://g2.antv.vision/en/docs/manual/about-g2">Tutorial Docs</a> •
+  <a href="https://www.yuque.com/antv">Blog</a> •
+  <a href="https://github.com/antvis/G2Plot">G2Plot</a>
+</p>
+
+G2 is a visualization grammar, a data-driven visual language with a high level of usability and scalability. It provides a set of grammars, takes users beyond a limited set of charts to an almost unlimited world of graphical forms. With G2, you can describe the visual appearance and interactive behavior of a visualization just by one statement, and generate web-based views using Canvas or SVG.
+
+## 📺 Live Demos
+
+<a href="https://g2.antv.vision/en/examples/gallery"><img src="https://user-images.githubusercontent.com/6628666/75466330-fe1d0c00-59c4-11ea-91ba-506f60ef8af4.png" style='width: 100%'/></a>
+
+## ✨ Features
+
+- 💯Stable grammar of graphics: enable to draw all kinds of charts by mapping data to graphics.
+- 🤩New grammar of interaction: interaction behaviors combined with Trigger and Action mechanisms are used to exploring data.
+- 🦍Advanced View module: with the ability to develop customized multi-dimension data analysis graphics.
+- 👬Dual-engine rendering: with the ability to switch Canvas and SVG freely.
+- 💄Visual components: interaction-oriented, elegant experience.
+- 🛡Fully embrace Typescript: Complete type definition files are provided.
+
+## 📦 Installation
 
 ```bash
 $ npm install @antv/g2
 ```
 
-### Usage
+## 🔨 Getting Started
 
-<img src="https://gw.alipayobjects.com/zos/rmsportal/aHvVgFiBnGzzKCEjdVtL.png" width="450">
+<img src="https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*8qbLQb7A0loAAAAAAAAAAABkARQnAQ" style="width: 600px">
+
+Before drawing we need to prepare a DOM container for G2:
 
 ```html
 <div id="c1"></div>
 ```
 
-```js
-import G2 from '@antv/g2';
+```ts
+import { Chart } from '@antv/g2';
 
 const data = [
   { genre: 'Sports', sold: 275 },
-  { genre: 'Strategy', sold: 1150 },
+  { genre: 'Strategy', sold: 115 },
   { genre: 'Action', sold: 120 },
   { genre: 'Shooter', sold: 350 },
   { genre: 'Other', sold: 150 },
 ];
 
-const chart = new G2.Chart({
-  container: 'c1',
-  width: 500,
-  height: 500
+// Step 1: Create a Chart instance.
+const chart = new Chart({
+  container: 'c1', // Specify chart container ID
+  width: 600, // Specify chart width
+  height: 300, // Specify chart height
 });
 
-chart.source(data);
-chart.interval().position('genre*sold').color('genre');
+// Step 2: Load the data.
+chart.data(data);
+
+// Step 3: Declare the grammar of graphics, draw column chart.
+chart.interval().position('genre*sold');
+
+// Step 4: Render chart.
 chart.render();
 ```
 
-[More examples](https://antv.alipay.com/zh-cn/g2/3.x/demo/index.html)
-
-![demos](https://user-images.githubusercontent.com/1655789/34187141-d800fe94-e56a-11e7-878a-4dc0e4f538d9.png)
-
-## Development
+## ⌨️ Development
 
 ```bash
+# Install dependencies
 $ npm install
 
-# run test case
+# Run test cases
+$ npm run test
+
+# Open electron to run test cases and listen to file changes
 $ npm run test-live
 
-# build watching file changes and run demos
-$ npm run dev
+# Run CI
+$ npm run ci
 
-# run demos
-$ npm run demos
+# Run website
+$ npm start
 ```
 
-## How to Contribute
+## 🏷️ Releases
+
+- v3.5.x: https://github.com/antvis/G2/tree/v3.5.x
+- v4.0.x: https://github.com/antvis/G2/tree/v4.0.x
+
+> You can also use **[G2Plot](https://github.com/antvis/G2Plot)** which is an interactive and responsive charting library based on G2. You can easily make superior statistical plots through a few lines of code.
+
+## 🤝 How to Contribute
 
 Please let us know how can we help. Do check out [issues](https://github.com/antvis/g2/issues) for bug reports or suggestions first.
 
 To become a contributor, please follow our [contributing guide](https://github.com/antvis/g2/blob/master/CONTRIBUTING.md).
 
-## ~~Experience Improvement Program Description~~
+## Contact us
 
-~~In order to serve the users better, G2 will send the URL and version information back to the AntV server:~~
+DingTalk Group: 30233731
 
-~~https://kcart.alipay.com/web/bi.do~~
-
-~~**Except for URL and G2 version information, no other information will be collected.** You can also turn it off with the following code:~~
-
-```js
-// disable tracking
-G2.track(false)
-```
-
-**update:**
-
-**We decided to terminate the "Experience Improvement Program". In verson `@antv/g2@3.4.7` and above, all tracking code is removed, no unexpected remote request will be sent while you are using G2.**
+<img src="https://gw.alipayobjects.com/zos/antfincdn/9sHnl5k%26u4/dingdingqun.png" width="200" height="266" />

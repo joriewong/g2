@@ -1,35 +1,40 @@
 const webpack = require('webpack');
 const resolve = require('path').resolve;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-  devtool: 'cheap-source-map',
   entry: {
-    g2: './src/index.js',
-    'g2-core': './src/core.js',
-    'g2-simple': './src/simple.js'
+    g2: './src/index.ts',
   },
   output: {
-    filename: '[name].js',
-    library: 'G2_3',
+    filename: '[name].min.js',
+    library: 'G2',
     libraryTarget: 'umd',
-    path: resolve(__dirname, 'build/')
+    path: resolve(__dirname, 'dist/'),
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        // exclude: /(node_modules|bower_components)/,
+        test: /\.ts$/,
         use: {
-          loader: 'babel-loader',
+          loader: 'ts-loader',
           options: {
-            babelrc: true
-          }
-        }
-      }
-    ]
+            transpileOnly: true,
+          },
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin()
-  ]
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled', // 不启动展示打包报告的http服务器
+      generateStatsFile: false, // 是否生成stats.json文件
+    }),
+  ],
+  devtool: 'source-map',
 };

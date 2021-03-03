@@ -30,14 +30,14 @@ $ git commit -m "fix(role): role.use must xxx"
 $ git push origin branch-name
 ```
 
-Then you can create a Pull Request at [g2](https://github.com/antvis/g2/pulls).
+Then you can create a Pull Request at [G2](https://github.com/antvis/g2/pulls).
 
-No one can guarantee how much will be remembered about certain PR after some time. To make sure we can easily recap what happened previously, please provide the following information in your PR.
+No one can garantee how much will be remembered about certain PR after some time. To make sure we can easily recap what happened previously, please provide the following information in your PR.
 
 1. Need: What function you want to achieve (Generally, please point out which issue is related).
 2. Updating Reason: Different with issue. Briefly describe your reason and logic about why you need to make such modification.
-3. Related Testing: Briefly describe what part of testing is relevant to your modification.
-4. User Tips: Notice for g2 users. You can skip this part, if the PR is not about update in API or potential compatibility problem.
+3. Related Testing: Briefly descirbe what part of testing is relevant to your modification.
+4. User Tips: Notice for scale users. You can skip this part, if the PR is not about update in API or potential compatibility problem.
 
 ### Style Guide
 
@@ -67,7 +67,6 @@ Must be one of the following:
 - perf: A code change that improves performance
 - test: Adding missing tests
 - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
-- deps: Updates about dependencies
 
 （2）scope
 
@@ -79,7 +78,7 @@ Use succinct words to describe what did you do in the commit change.
 
 （4）body
 
-Feel free to add more content in the body, if you think subject is not self-explanatory enough, such as what it is the purpose or reasons of you commit.
+Feel free to add more content in the body, if you think subject is not self-explanatory enough, such as what it is the purpose or reasone of you commit.
 
 （5）footer
 
@@ -104,19 +103,18 @@ BREAKING CHANGE:
   Breaks foo.bar api, foo.baz should be used instead
 ```
 
-Look at [these files](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) for more details.
+Look at [these files](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit) for more detials.
 
 ## Release
 
-g2 uses semantic versioning in release process based on [semver].
+G2 uses semantic versioning in release process based on [semver].
 
 ### Branch Strategy
 
-`master` branch is the latest stable version. 
+`master` branch is the latest stable version.
 
 - just checkout develop branch from `master`
 - All new features will be added into `master` or `next` branch as well as all bug-fix except security issues. In such way, we can motivate developers to update to the latest stable version.
-
 
 ### Release Strategy
 
@@ -130,13 +128,12 @@ In the release of every stable version, there will be a PM who has the following
 
 - Confirm that performance test is passed and all issues in current Milestone are either closed or can be delayed to later versions.
 - Open a new [Release Proposal MR], and write `History` as [node CHANGELOG]. Don't forget to correct content in documentation which is related to the releasing version. Commits can be generated automatically.
-    ```
-    $ npm run commits
-    ```
+  ```
+  $ npm run commits
+  ```
 - Nominate PM for next stable version.
 
-
 [semver]: http://semver.org/lang/zh-CN/
-[Release proposal MR]: https://github.com/nodejs/node/pull/4181
-[node CHANGELOG]: https://github.com/nodejs/node/blob/master/CHANGELOG.md
+[release proposal mr]: https://github.com/nodejs/node/pull/4181
+[node changelog]: https://github.com/nodejs/node/blob/master/CHANGELOG.md
 [『我是如何发布一个 npm 包的』]: https://fengmk2.com/blog/2016/how-i-publish-a-npm-package
