@@ -1,6 +1,6 @@
 /* G2 的一个壳子，不包含 Geometry，由开发者自己定义和引入 */
 
-export const VERSION = '4.1.12';
+export const VERSION = '4.1.13';
 
 // 核心基类导出
 export { Chart, View, Event } from './chart'; // Chart, View 类
@@ -48,7 +48,7 @@ export { registerAnimation, getAnimation } from './animate/animation';
 export { LAYER, DIRECTION } from './constant';
 
 // 因为 typescript 部分版本不支持 export * as 语法。
-import * as Types from './interface';
+import type * as Types from './interface';
 export { Types };
 
 export { IGroup, ShapeAttrs, Coordinate, Scale, ScaleConfig } from './dependents';
