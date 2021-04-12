@@ -15,18 +15,33 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: {
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true,
+        test: /\.(js|ts)$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                '@babel/preset-env',
+                {
+                  targets: {
+                    browsers: ['> 1%', 'last 2 versions'],
+                  },
+                },
+              ],
+            },
           },
-        },
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
       },
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.jsx', '.tsx', '.ts', '.js'],
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
